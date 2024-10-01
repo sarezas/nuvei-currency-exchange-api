@@ -1,0 +1,24 @@
+{
+  "name": "nuvei-currency-exchange-api",
+  "version": "1.0.0",
+  "description": "Nuvei Currency Exchange API",
+  "main": "index.ts",
+  "scripts": {
+    "build": "tsc",
+    "start": "ts-node src/api/index.ts",
+    "dev": "nodemon src/api/index.ts"
+  },
+  "author": "S.M.",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.7.4",
+    "eslint": "^9.11.1",
+    "nodemon": "^3.1.7",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.6.2"
+  },
+  "dependencies": {
+    "express": "^4.21.0"
+  }
+}
