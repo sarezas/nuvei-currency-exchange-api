@@ -49,6 +49,10 @@
   - run the container
     - docker run -d -p 5001:5001 currency-exchange-api
 
+### Github repo
+
+  - https://github.com/sarezas/nuvei-currency-exchange-api.git
+
 ### Public endpoint
 
   - GET https://www.prisnu.se/quote
