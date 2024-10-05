@@ -40,3 +40,13 @@
 ### Testing
 
   - npm run test
+
+### Containerization
+
+  - build Docker image:
+    - docker build -t currency-exchange-api .
+  
+  - run the container
+    - docker run -d -p 5001:5001 currency-exchange-api
+
+
