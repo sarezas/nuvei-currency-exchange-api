@@ -1,6 +1,6 @@
 import joi from "joi";
 
-const allowedCurrencyCodes = ["USD", "usd", "EUR", "eur", "GBP", "gbp", "ILS", "ils"];
+const allowedCurrencyCodes = ["USD", "EUR", "GBP", "ILS"];
 
 export const querySchema = joi.object({
   baseAmount: joi.number().integer().required(),

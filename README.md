@@ -49,4 +49,14 @@
   - run the container
     - docker run -d -p 5001:5001 currency-exchange-api
 
+### Public endpoint
+
+  - GET https://www.prisnu.se/quote
+      - query params:
+        - baseCurrency=USD | EUR | GBP | ILS 
+     baseAmount=any natural number
+        - quoteCurrency=USD | EUR | GBP | ILS 
+
+  - e.g. https://www.prisnu.se/quote?baseCurrency=EUR&baseAmount=100&quoteCurrency=GBP
+    - reponse body: {"exchangeRate": 1.1,"quoteAmount": 110}
 
