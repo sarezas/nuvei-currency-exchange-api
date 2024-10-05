@@ -8,14 +8,10 @@ export const getBaseCurrencyRates = async (
   const cachedRates: BaseCurrencyRates | undefined = cache.get(baseCurrency);
 
   if (!!cachedRates) {
-    // TODO: remove
-    cache.debug();
     return cachedRates;
   } else {
     const rates: BaseCurrencyRates = await fetchBaseCurrencyRates(baseCurrency);
     cache.put(baseCurrency, rates);
-    // TODO: remove
-    cache.debug();
     return rates;
   }
 };
