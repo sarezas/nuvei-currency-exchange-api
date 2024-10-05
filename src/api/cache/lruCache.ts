@@ -1,11 +1,12 @@
 export class LRUCache<Key, Value> {
   private capacity: number;
   private cache: Map<Key, Value>;
+  // private intervalId: NodeJS.Timeout | null;
 
   constructor(capacity: number) {
     this.capacity = capacity;
     this.cache = new Map<Key, Value>();
-    this.clear();
+    // this.intervalId = this.setInterval();
   }
 
   get(key: Key): Value | undefined {
@@ -44,7 +45,25 @@ export class LRUCache<Key, Value> {
     console.log("Items in cache: ", Array.from(this.cache.entries()));
   }
 
-  clear(interval: number = 3600000): void {
-    setInterval(() => this.cache.clear(), interval);
-  }
+  // TODO: 3600000
+  // clear(): void {
+  //   this.cache.clear();
+  // }
+
+  // clearInterval(): void {
+  //   console.log(typeof this.intervalId, this.intervalId);
+  //   if (this.intervalId !== null) {
+  //     console.log(`clear old interval - ${this.intervalId}`);
+  //     clearInterval(this.intervalId);
+  //     // this.intervalId?.unref();
+  //     this.intervalId = null;
+  //   }
+  // }
+
+  // setInterval(interval: number = 2000): NodeJS.Timeout {
+  //   this.clearInterval();
+  //   return setInterval(() => {
+  //     console.log(`set new interval - ${this.intervalId}`);
+  //   }, interval);
+  // }
 }

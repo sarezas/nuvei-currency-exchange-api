@@ -30,3 +30,13 @@
 ### Caching
 
   - In-memory LRU cache
+
+### Starting the server locally
+
+  - npm install
+  - npm run build
+  - npm run dev
+
+### Testing
+
+  - npm run test

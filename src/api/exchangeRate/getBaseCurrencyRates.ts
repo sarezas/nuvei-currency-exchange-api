@@ -5,14 +5,17 @@ export const getBaseCurrencyRates = async (
   baseCurrency: string,
   cache: LRUCache<string, BaseCurrencyRates>
 ): Promise<BaseCurrencyRates> => {
-  const cachedRates = cache.get(baseCurrency);
+  const cachedRates: BaseCurrencyRates | undefined = cache.get(baseCurrency);
 
   if (!!cachedRates) {
-    cache.put(baseCurrency, cachedRates);
+    // TODO: remove
+    cache.debug();
     return cachedRates;
   } else {
-    const rates = await fetchBaseCurrencyRates(baseCurrency);
+    const rates: BaseCurrencyRates = await fetchBaseCurrencyRates(baseCurrency);
     cache.put(baseCurrency, rates);
+    // TODO: remove
+    cache.debug();
     return rates;
   }
 };
@@ -26,7 +29,7 @@ const fetchBaseCurrencyRates = async (baseCurrency: string): Promise<BaseCurrenc
     throw new Error("No rates found");
   }
 
-  const targetRates = getTargetRates(data.rates);
+  const targetRates: BaseCurrencyRates = getTargetRates(data.rates);
 
   return targetRates;
 };

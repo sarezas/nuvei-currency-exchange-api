@@ -2,8 +2,8 @@ import { NextFunction, Request, Response } from "express";
 
 import { ApiResponse, BaseCurrencyRates } from "../../types/types";
 import { LRUCache } from "../cache/lruCache";
-import { getBaseCurrencyRates } from "../exchange-rate/get-base-currency-rates";
-import { querySchema } from "../utils/validate-query-params";
+import { getBaseCurrencyRates } from "../exchangeRate/getBaseCurrencyRates";
+import { querySchema } from "../utils/validateQueryParams";
 
 export const getQuoteCurrencyRateAndAmount = async (
   req: Request,

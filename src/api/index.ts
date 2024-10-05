@@ -1,16 +1,18 @@
-import express from "express";
+import app from "./app";
 
-import { BaseCurrencyRates } from "../types/types";
-import { LRUCache } from "./cache/lruCache";
-import { getQuoteCurrencyRateAndAmount } from "./handlers";
-import { tryCatchRouteWrapper } from "./utils/route-wrapper";
-
-const app = express();
 const PORT = 5001;
-const cache = new LRUCache<string, BaseCurrencyRates>(5);
-
-app.use(express.json());
-app.get("/quote", tryCatchRouteWrapper(getQuoteCurrencyRateAndAmount, cache));
-app.listen(PORT, () => {
+const server = app.listen(PORT, () => {
   console.log(`Listening: http://localhost:${PORT}`);
 });
+
+const onCloseSignal = () => {
+  console.log("SIGINT received, shutting down");
+  server.close(() => {
+    console.log("Server closed");
+    process.exit();
+  });
+  setTimeout(() => process.exit(1), 10000).unref();
+};
+
+process.on("SIGINT", onCloseSignal);
+process.on("SIGTERM", onCloseSignal);
