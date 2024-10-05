@@ -58,7 +58,7 @@
   - GET https://www.prisnu.se/quote
       - query params:
         - baseCurrency=USD | EUR | GBP | ILS 
-     baseAmount=any natural number
+        - baseAmount=any natural number
         - quoteCurrency=USD | EUR | GBP | ILS 
 
   - e.g. https://www.prisnu.se/quote?baseCurrency=EUR&baseAmount=100&quoteCurrency=GBP
