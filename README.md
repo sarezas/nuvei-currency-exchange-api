@@ -1,6 +1,6 @@
-### Nuvei Currency exchange API
+# Nuvei Currency exchange API
 
-# API request interface
+### API request interface
 
   - GET /quote
   - Query parameter description:
@@ -8,7 +8,7 @@
     - quoteCurrency - string, 3 letters ISO currency code. Currency to convert to.
     - baseAmount - integer, amount to convert in cents. Example: 100 (1 USD).
 
-# API response interface
+### API response interface
 
   - JSON
   - Properties:
@@ -16,17 +16,17 @@
     - quoteAmount - integer, the expected amount in cents. Free-choice rounding policy.
 
 
-# Supported currencies
+### Supported currencies
 
   - USD
   - EUR 
   - GBP
   - ILS
 
-# 3rd party exchange rate provider
+### Third party exchange rate provider
 
   - GET https://api.exchangerate-api.com/v4/latest/${baseCurrencyIsoString}
 
-# Caching
+### Caching
 
   - In-memory LRU cache

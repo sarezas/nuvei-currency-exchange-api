@@ -1,21 +1,16 @@
-import express, { Request, Response } from "express";
-import { STATUS_CODES } from "http";
+import express from "express";
 
-/**
- * TODO:
- *  import cache in calculation service
- *  import calculation service
- */
+import { BaseCurrencyRates } from "../types/types";
+import { LRUCache } from "./cache/lruCache";
+import { getQuoteCurrencyRateAndAmount } from "./handlers";
+import { tryCatchRouteWrapper } from "./utils/route-wrapper";
 
 const app = express();
 const PORT = 5001;
+const cache = new LRUCache<string, BaseCurrencyRates>(5);
 
 app.use(express.json());
-
-app.get("/quote", async (req: Request, res: Response) => {
-  console.log({ req });
-});
-
+app.get("/quote", tryCatchRouteWrapper(getQuoteCurrencyRateAndAmount, cache));
 app.listen(PORT, () => {
   console.log(`Listening: http://localhost:${PORT}`);
 });
