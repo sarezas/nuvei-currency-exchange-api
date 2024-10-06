@@ -1,4 +1,4 @@
-# Nuvei Currency exchange API
+# Nuvei Currency Exchange API
 
 ### API request interface
 
