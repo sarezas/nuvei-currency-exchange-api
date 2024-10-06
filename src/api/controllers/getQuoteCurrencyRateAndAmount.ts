@@ -1,6 +1,6 @@
 import { NextFunction, Request, Response } from "express";
 
-import { ApiResponse, BaseCurrencyRates } from "../../types/types";
+import { ApiResponse, CurrencyRates } from "../../types/types";
 import { LRUCache } from "../cache/lruCache";
 
 import { getBaseCurrencyRates } from "../exchangeRate/getBaseCurrencyRates";
@@ -10,7 +10,7 @@ export const getQuoteCurrencyRateAndAmount = async (
   req: Request,
   res: Response,
   next: NextFunction,
-  cache: LRUCache<string, BaseCurrencyRates>
+  cache: LRUCache<string, CurrencyRates>
 ): Promise<void> => {
   const {
     error,
@@ -18,10 +18,10 @@ export const getQuoteCurrencyRateAndAmount = async (
   } = querySchema.validate(req.query);
 
   if (error) {
-    res.status(400).send(`<pre>Invalid request. ${error.message}</pre>`);
+    res.status(400).send({ message: `Invalid request. ${error.message}` });
     return next();
   } else {
-    const rates: BaseCurrencyRates = await getBaseCurrencyRates(baseCurrency, cache);
+    const rates: CurrencyRates = await getBaseCurrencyRates(baseCurrency, cache);
     const result: ApiResponse = {
       exchangeRate: rates[quoteCurrency],
       quoteAmount: Math.round(baseAmount * rates[quoteCurrency]),

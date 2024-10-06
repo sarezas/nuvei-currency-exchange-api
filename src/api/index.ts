@@ -6,9 +6,9 @@ const server = app.listen(PORT, () => {
 });
 
 const onCloseSignal = () => {
-  console.log("SIGINT received, shutting down");
+  console.warn("SIGINT received, shutting down");
   server.close(() => {
-    console.log("Server closed");
+    console.warn("Server closed");
     process.exit();
   });
   setTimeout(() => process.exit(1), 10000).unref();

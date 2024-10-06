@@ -35,7 +35,7 @@
 
   - npm install
   - npm run build
-  - npm run dev
+  - npm run dev or npm run start
 
 ### Testing
 
@@ -62,5 +62,5 @@
         - quoteCurrency=USD | EUR | GBP | ILS 
 
   - e.g. https://www.prisnu.se/quote?baseCurrency=EUR&baseAmount=100&quoteCurrency=GBP
-    - reponse body: {"exchangeRate": 0.837,"quoteAmount": 84}
+    - JSON reponse body: {"exchangeRate": 0.837, "quoteAmount": 84}
 
